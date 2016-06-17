@@ -22,19 +22,15 @@ master.attributes('-fullscreen', True)
 master.configure(background='#4D4D4D')
 
 def sshd():
-	keep_flat()
 	sysc('sudo systemctl disable ssh')
 
 def sshe():
-	keep_flat()
 	sysc('sudo systemctl enable ssh')
 
 def smbd():
-	keep_flat()
 	sysc('sudo systemctl disable samba')
 
 def smbe():
-	keep_flat()
 	sysc('sudo systemctl enable samba')
 
 def quitApp():
