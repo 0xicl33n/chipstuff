@@ -7,7 +7,7 @@ import tkFont
 
 BCHIP_BG = '#F1157F' # button background
 BCHIP_FG = 'white' # button text
-B_WIDTH = 10 # button width
+B_WIDTH = 30 # button width
 B_HEIGHT = 1 # button height
 WINDOW_BG = '#4D4D4D' # window background
 
@@ -17,7 +17,7 @@ def keep_flat(event):
     if event.widget is btn: 
         event.widget.config(relief=FLAT) 
 
-ntcFont = tkFont.Font(family='Lato-Regular',size=18) # this is the font chip uses for its interface
+ntcFont = tkFont.Font(family='Lato-Regular',size=14) # this is the font chip uses for its interface
 master.attributes('-fullscreen', True)
 master.configure(background='#4D4D4D')
 
