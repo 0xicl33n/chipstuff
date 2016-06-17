@@ -44,10 +44,17 @@ smb_e = Button(master, text="Start Samba", font=ntcFont, command=smbe, height = 
 smb_d = Button(master, text="Stop Samba", font=ntcFont, command=smbd, height = B_HEIGHT, width = B_WIDTH, fg=BCHIP_FG, bg=BCHIP_BG, relief=FLAT,highlightthickness=0,bd=0)
 quit = Button(master, text="Quit", font=ntcFont, command=quitApp, height = B_HEIGHT, width = B_WIDTH, fg=BCHIP_FG, bg=BCHIP_BG, relief=FLAT,highlightthickness=0,bd=0)
 
-ssh_e.pack(side=TOP, padx=5, pady=5)
-ssh_d.pack(side=TOP, padx=5, pady=5)
-smb_e.pack(side=TOP, padx=5, pady=5)
-smb_d.pack(side=TOP, padx=5, pady=5)
-quit.pack(side=TOP, padx=5, pady=5)
+
+
+ssh_e.place(relx=0.5, rely=0.30, anchor=CENTER)
+ssh_d.place(relx=0.5, rely=0.35, anchor=CENTER)
+smb_e.place(relx=0.5, rely=0.40, anchor=CENTER)
+smb_d.place(relx=0.5, rely=0.45, anchor=CENTER)
+quit.place(relx=0.5, rely=0.5, anchor=CENTER)
+#ssh_e.pack(side=TOP, padx=5, pady=5)
+#ssh_d.pack(side=TOP, padx=5, pady=5)
+#smb_e.pack(side=TOP, padx=5, pady=5)
+#smb_d.pack(side=TOP, padx=5, pady=5)
+#quit.pack(side=TOP, padx=5, pady=5)
 
 mainloop()
