@@ -7,7 +7,7 @@ import tkFont
 
 BCHIP_BG = '#F1157F' # button background
 BCHIP_FG = 'white' # button text
-B_WIDTH = 30 # button width
+B_WIDTH = 10 # button width
 B_HEIGHT = 1 # button height
 WINDOW_BG = '#4D4D4D' # window background
 
@@ -22,26 +22,26 @@ master.attributes('-fullscreen', True)
 master.configure(background='#4D4D4D')
 
 def sshd():
-	sysc('sudo systemctl disable ssh')
+	sysc('sudo systemctl stop ssh')
 
 def sshe():
-	sysc('sudo systemctl enable ssh')
+	sysc('sudo systemctl start ssh')
 
 def smbd():
-	sysc('sudo systemctl disable samba')
+	sysc('sudo systemctl stop samba')
 
 def smbe():
-	sysc('sudo systemctl enable samba')
+	sysc('sudo systemctl start samba')
 
 def quitApp():
 	sys.exit(1)
 
 def pressed(self, index):
 	Button.buttons[index].configure(bg="red")
-ssh_e = Button(master, text="Enable SSH", font=ntcFont, command=sshd, height = B_HEIGHT, width = B_WIDTH, fg=BCHIP_FG, bg=BCHIP_BG, relief=FLAT,highlightthickness=0,bd=0)
-ssh_d = Button(master, text="Disable SSH",font=ntcFont, command=sshe, height = B_HEIGHT, width = B_WIDTH, fg=BCHIP_FG, bg=BCHIP_BG, relief=FLAT,highlightthickness=0,bd=0)
-smb_e = Button(master, text="Enable Samba", font=ntcFont, command=smbe, height = B_HEIGHT, width = B_WIDTH, fg=BCHIP_FG, bg=BCHIP_BG, relief=FLAT,highlightthickness=0,bd=0)
-smb_d = Button(master, text="Disable Samba", font=ntcFont, command=smbd, height = B_HEIGHT, width = B_WIDTH, fg=BCHIP_FG, bg=BCHIP_BG, relief=FLAT,highlightthickness=0,bd=0)
+ssh_e = Button(master, text="Start SSH", font=ntcFont, command=sshd, height = B_HEIGHT, width = B_WIDTH, fg=BCHIP_FG, bg=BCHIP_BG, relief=FLAT,highlightthickness=0,bd=0)
+ssh_d = Button(master, text="Stop SSH",font=ntcFont, command=sshe, height = B_HEIGHT, width = B_WIDTH, fg=BCHIP_FG, bg=BCHIP_BG, relief=FLAT,highlightthickness=0,bd=0)
+smb_e = Button(master, text="Start Samba", font=ntcFont, command=smbe, height = B_HEIGHT, width = B_WIDTH, fg=BCHIP_FG, bg=BCHIP_BG, relief=FLAT,highlightthickness=0,bd=0)
+smb_d = Button(master, text="Stop Samba", font=ntcFont, command=smbd, height = B_HEIGHT, width = B_WIDTH, fg=BCHIP_FG, bg=BCHIP_BG, relief=FLAT,highlightthickness=0,bd=0)
 quit = Button(master, text="Quit", font=ntcFont, command=quitApp, height = B_HEIGHT, width = B_WIDTH, fg=BCHIP_FG, bg=BCHIP_BG, relief=FLAT,highlightthickness=0,bd=0)
 
 ssh_e.pack(side=TOP, padx=5, pady=5)
