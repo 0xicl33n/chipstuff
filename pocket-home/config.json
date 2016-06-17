@@ -1,0 +1,75 @@
+{
+  "defaultPage" : "Apps",
+  "pages": [
+    {
+      "name": "Apps",
+      "items": [
+        {
+          "name": "Terminal",
+          "icon": "appIcons/terminal.png",
+          "shell": "vala-terminal -fs 8 -g 20 20"
+        },
+        {
+          "name": "PICO-8",
+          "icon": "appIcons/pico8.png",
+          "shell": "pico8"
+        },
+        {
+          "name": "Sunvox",
+          "icon": "appIcons/musicsequencer.png",
+          "shell": "sunvox"
+         },
+         {
+          "name": "IRC",
+          "icon": "appIcons/hexchat4.png",
+          "shell": "hexchat irc.freenode.net"
+        },
+        {
+          "name": "Surf",
+          "icon": "appIcons/surf.png",
+          "shell": "surf google.com"
+        },
+        {
+          "name": "File Manager",
+          "icon": "appIcons/filebrowser.png",
+          "shell": "pcmanfm"
+        },
+      ],
+      "cornerButtons": [
+        {
+          "location": "TopLeft",
+          "name": "Battery",
+          "icon": "battery_0.png"
+        },
+        {
+          "location": "TopRight",
+          "name": "WiFi",
+          "icon": "wifiOff.png"
+        },
+
+        {
+          "location": "BottomLeft",
+          "name": "Power",
+          "icon": "powerIcon.png"
+        },
+        {
+          "location": "BottomRight",
+          "name": "Settings",
+          "icon": "settingsIcon.png"
+        }
+      ]
+    },
+    {
+      "name": "Settings"
+    },
+    {
+      "name": "Power"
+    },
+    {
+      "name": "WiFi"
+    },
+    {
+      "name": "Battery"
+    }
+  ]
+}
