@@ -22,10 +22,10 @@ master.attributes('-fullscreen', True)
 master.configure(background='#4D4D4D')
 
 def sshd():
-	sysc('sudo systemctl stop ssh')
+	sysc('sudo systemctl stop sshd')
 
 def sshe():
-	sysc('sudo systemctl start ssh')
+	sysc('sudo systemctl start sshd')
 
 def smbd():
 	sysc('sudo systemctl stop samba')
