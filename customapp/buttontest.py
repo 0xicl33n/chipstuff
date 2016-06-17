@@ -32,11 +32,11 @@ def smbe():
 def quitApp():
 	sys.exit(1)
 
-ssh_e = Button(master, text="Enable SSH", font=arial36, command=sshd, height = 1, width = 50, fg='white', bg='#F1157F', relief=FLAT)
-ssh_d = Button(master, text="Disable SSH",font=arial36, command=sshe, height = 1, width = 50, fg='white', bg='#F1157F', relief=FLAT)
-smb_e = Button(master, text="Enable Samba", font=arial36, command=smbe, height = 1, width = 50, fg='white', bg='#F1157F', relief=FLAT)
-smb_d = Button(master, text="Disable Samba", font=arial36, command=smbd, height = 1, width = 50, fg='white', bg='#F1157F', relief=FLAT)
-quit = Button(master, text="Quit", font=arial36, command=quitApp, height = 1, width = 50, fg='white', bg='#F1157F', relief=FLAT)
+ssh_e = Button(master, text="Enable SSH", font=arial36, command=sshd, height = 1, width = 50, fg='white', bg='#F1157F', relief=FLAT,highlightthickness=0,bd=0)
+ssh_d = Button(master, text="Disable SSH",font=arial36, command=sshe, height = 1, width = 50, fg='white', bg='#F1157F', relief=FLAT,highlightthickness=0,bd=0)
+smb_e = Button(master, text="Enable Samba", font=arial36, command=smbe, height = 1, width = 50, fg='white', bg='#F1157F', relief=FLAT,highlightthickness=0,bd=0)
+smb_d = Button(master, text="Disable Samba", font=arial36, command=smbd, height = 1, width = 50, fg='white', bg='#F1157F', relief=FLAT,highlightthickness=0,bd=0)
+quit = Button(master, text="Quit", font=arial36, command=quitApp, height = 1, width = 50, fg='white', bg='#F1157F', relief=FLAT,highlightthickness=0,bd=0)
 
 ssh_e.pack(side=TOP, padx=5, pady=5)
 ssh_d.pack(side=TOP, padx=5, pady=5)
