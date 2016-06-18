@@ -1,9 +1,9 @@
 #!/usr/bin/env python2
 #by b0nnie
 from Tkinter import *
-from os import system as sysc
 import sys
 import tkFont
+import subprocess
 
 BCHIP_BG = '#F1157F' # button background
 BCHIP_FG = 'white' # button text
@@ -22,16 +22,23 @@ master.attributes('-fullscreen', True)
 master.configure(background='#4D4D4D')
 
 def sshd():
-	sysc('sudo systemctl stop ssh')
+	subprocess.Popen('sudo systemctl stop ssh',stdout=subprocess.PIPE, stderr=subprocess.PIPE, shell=True).wait()
 
 def sshe():
-	sysc('sudo systemctl start ssh')
+	subprocess.Popen('sudo systemctl start ssh',stdout=subprocess.PIPE, stderr=subprocess.PIPE, shell=True).wait()
 
 def smbd():
-	sysc('sudo systemctl stop samba')
+	subprocess.Popen('sudo systemctl stop samba',stdout=subprocess.PIPE, stderr=subprocess.PIPE, shell=True).wait()
 
 def smbe():
-	sysc('sudo systemctl start samba')
+	subprocess.Popen('sudo systemctl start samba',stdout=subprocess.PIPE, stderr=subprocess.PIPE, shell=True).wait()
+
+def vnce():
+	subprocess.Popen('sudo vncserver',stdout=subprocess.PIPE, stderr=subprocess.PIPE, shell=True).wait()
+
+def vncd():
+	subprocess.Popen('sudo vncserver -kill :1',stdout=subprocess.PIPE, stderr=subprocess.PIPE, shell=True).wait()
+
 
 def quitApp():
 	sys.exit(1)
@@ -40,21 +47,18 @@ def pressed(self, index):
 	Button.buttons[index].configure(bg="red")
 ssh_e = Button(master, text="Start SSH", font=ntcFont, command=sshd, height = B_HEIGHT, width = B_WIDTH, fg=BCHIP_FG, bg=BCHIP_BG, relief=FLAT,highlightthickness=0,bd=0)
 ssh_d = Button(master, text="Stop SSH",font=ntcFont, command=sshe, height = B_HEIGHT, width = B_WIDTH, fg=BCHIP_FG, bg=BCHIP_BG, relief=FLAT,highlightthickness=0,bd=0)
-smb_e = Button(master, text="Start Samba", font=ntcFont, command=smbe, height = B_HEIGHT, width = B_WIDTH, fg=BCHIP_FG, bg=BCHIP_BG, relief=FLAT,highlightthickness=0,bd=0)
-smb_d = Button(master, text="Stop Samba", font=ntcFont, command=smbd, height = B_HEIGHT, width = B_WIDTH, fg=BCHIP_FG, bg=BCHIP_BG, relief=FLAT,highlightthickness=0,bd=0)
+vnc_e = Button(master, text="Start VNC", font=ntcFont, command=vnce, height = B_HEIGHT, width = B_WIDTH, fg=BCHIP_FG, bg=BCHIP_BG, relief=FLAT,highlightthickness=0,bd=0)
+vnc_d = Button(master, text="Stop VNC", font=ntcFont, command=vncd, height = B_HEIGHT, width = B_WIDTH, fg=BCHIP_FG, bg=BCHIP_BG, relief=FLAT,highlightthickness=0,bd=0)
+#smb_e = Button(master, text="Start Samba", font=ntcFont, command=smbe, height = B_HEIGHT, width = B_WIDTH, fg=BCHIP_FG, bg=BCHIP_BG, relief=FLAT,highlightthickness=0,bd=0)
+#smb_d = Button(master, text="Stop Samba", font=ntcFont, command=smbd, height = B_HEIGHT, width = B_WIDTH, fg=BCHIP_FG, bg=BCHIP_BG, relief=FLAT,highlightthickness=0,bd=0)
 quit = Button(master, text="Quit", font=ntcFont, command=quitApp, height = B_HEIGHT, width = B_WIDTH, fg=BCHIP_FG, bg=BCHIP_BG, relief=FLAT,highlightthickness=0,bd=0)
 
 
 
-ssh_e.place(relx=0.5, rely=0.30, anchor=CENTER)
+ssh_e.place(relx=0.5, rely=0.2, anchor=CENTER)
 ssh_d.place(relx=0.5, rely=0.35, anchor=CENTER)
-smb_e.place(relx=0.5, rely=0.40, anchor=CENTER)
-smb_d.place(relx=0.5, rely=0.45, anchor=CENTER)
-quit.place(relx=0.5, rely=0.5, anchor=CENTER)
-#ssh_e.pack(side=TOP, padx=5, pady=5)
-#ssh_d.pack(side=TOP, padx=5, pady=5)
-#smb_e.pack(side=TOP, padx=5, pady=5)
-#smb_d.pack(side=TOP, padx=5, pady=5)
-#quit.pack(side=TOP, padx=5, pady=5)
+vnc_e.place(relx=0.5, rely=0.5, anchor=CENTER)
+vnc_d.place(relx=0.5, rely=0.65, anchor=CENTER)
+quit.place(relx=0.5, rely=0.8, anchor=CENTER)
 
 mainloop()
