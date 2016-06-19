@@ -19,7 +19,7 @@ def keep_flat(event):
 
 ntcFont = tkFont.Font(family='Lato-Regular',size=14) # this is the font chip uses for its interface
 master.attributes('-fullscreen', True)
-master.configure(background='#4D4D4D')
+master.configure(background=WINDOW_BG)
 
 def sshd():
 	subprocess.Popen('sudo systemctl stop ssh',stdout=subprocess.PIPE, stderr=subprocess.PIPE, shell=True).wait()
