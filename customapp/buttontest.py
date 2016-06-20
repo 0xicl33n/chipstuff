@@ -5,54 +5,48 @@ import sys
 import tkFont
 import subprocess
 
-BCHIP_BG = '#F1157F' # button background
-BCHIP_FG = 'white' # button text
-B_WIDTH = 30 # button width
-B_HEIGHT = 1 # button height
-WINDOW_BG = '#4D4D4D' # window background
+# Constants
+# ------------------------------------------------------------------------------
+WINDOW_BACKGROUND = '#4D4D4D'
+NTC_FONT          = tkFont.Font(family='Lato-Regular',size=14)
 
-master = Tk()
+# Class
+# ------------------------------------------------------------------------------
+class ntcStyleButton(Button):
+    def __init__(self, window, buttonLabel, buttonCommand, yPosition):
+        # Tkinter is an old style class (does not inherit from object), therefor
+        Button.__init__(
+                self,
+                window,
+                text               = buttonLabel,   # Button Label
+                font               = NTC_FONT,      # Button Font
+                command            = buttonCommand, # Button Command
+                height             = 1,             # Button Height
+                width              = 30,            # Button Width
+                fg                 = '#FFFFFF',     # Button Foreground Color
+                bg                 = '#F1157F',     # Button Background Color
+                relief             = FLAT,
+                highlightthickness = 0,
+                bd                 = 0
+                )
+        self.place(relx=0.5, rely=yPosition, anchor=CENTER)
 
-def keep_flat(event):    
-    if event.widget is btn: 
-        event.widget.config(relief=FLAT) 
+class shell:
+    def __init__(self, cmd):
+        self.cmd = cmd
 
-ntcFont = tkFont.Font(family='Lato-Regular',size=14) # this is the font chip uses for its interface
-master.attributes('-fullscreen', True)
-master.configure(background=WINDOW_BG)
-
-class createButton():
-	def __init__(self):
-		self.data = []
-		self.opts = 'height = B_HEIGHT, width = B_WIDTH, fg=BCHIP_FG, bg=BCHIP_BG, relief=FLAT,highlightthickness=0,bd=0'
-		self.text = ''
-		self.cmd = ''
-		self.clicky = Button(master,self.text,self.cmd,self.opts)
-
-def runAcmd(cmd):
-	subprocess.Popen(cmd,stdout=subprocess.PIPE, stderr=subprocess.PIPE, shell=True).wait()
-
-
-def quitApp():
-	sys.exit(1)
-
-def pressed(self, index):
-	Button.buttons[index].configure(bg="red")
-
+    def __call__(self):
+        subprocess.Popen(self.cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE, shell=True).wait()
 
 
-ssh_e = Button(master, text="Start SSH", font=ntcFont, command=runAcmd('sudo systemctl start ssh'), height = B_HEIGHT, width = B_WIDTH, fg=BCHIP_FG, bg=BCHIP_BG, relief=FLAT,highlightthickness=0,bd=0)
-ssh_d = Button(master, text="Stop SSH",font=ntcFont, command=runAcmd('sudo systemctl stop ssh'), height = B_HEIGHT, width = B_WIDTH, fg=BCHIP_FG, bg=BCHIP_BG, relief=FLAT,highlightthickness=0,bd=0)
-vnc_e = Button(master, text="Start VNC", font=ntcFont, command=runAcmd('sudo vncserver'), height = B_HEIGHT, width = B_WIDTH, fg=BCHIP_FG, bg=BCHIP_BG, relief=FLAT,highlightthickness=0,bd=0)
-vnc_d = Button(master, text="Stop VNC", font=ntcFont, command=runAcmd('sudo vncserver -kill :1'), height = B_HEIGHT, width = B_WIDTH, fg=BCHIP_FG, bg=BCHIP_BG, relief=FLAT,highlightthickness=0,bd=0)
-quit = Button(master, text="Quit", font=ntcFont, command=quitApp, height = B_HEIGHT, width = B_WIDTH, fg=BCHIP_FG, bg=BCHIP_BG, relief=FLAT,highlightthickness=0,bd=0)
+mainWindow = Tk()
+mainWindow.attributes('-fullscreen', True)
+mainWindow.configure(background=WINDOW_BACKGROUND)
 
-
-
-ssh_e.place(relx=0.5, rely=0.2, anchor=CENTER)
-ssh_d.place(relx=0.5, rely=0.35, anchor=CENTER)
-vnc_e.place(relx=0.5, rely=0.5, anchor=CENTER)
-vnc_d.place(relx=0.5, rely=0.65, anchor=CENTER)
-quit.place(relx=0.5, rely=0.8, anchor=CENTER)
+ntcStyleButton(mainWindow, "Start SSH", shell('sudo systemctl start ssh'), 0.20 )
+ntcStyleButton(mainWindow, "Stop SSH" , shell('sudo systemctl stop ssh') , 0.35 )
+ntcStyleButton(mainWindow, "Start VNC", shell('sudo vncserver')          , 0.50 )
+ntcStyleButton(mainWindow, "Stop VNC" , shell('sudo vncserver -kill :1') , 0.65 )
+ntcStyleButton(mainWindow, "Quit"     , sys.exit                         , 0.80 )
 
 mainloop()
