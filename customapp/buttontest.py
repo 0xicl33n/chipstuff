@@ -5,10 +5,14 @@ import sys
 import tkFont
 import subprocess
 
+# Main Window
+# ------------------------------------------------------------------------------
+mainWindow = Tk()
+
 # Constants
 # ------------------------------------------------------------------------------
 WINDOW_BACKGROUND = '#4D4D4D'
-NTC_FONT          = tkFont.Font(family='Lato-Regular',size=14)
+NTC_FONT          = tkFont.Font(root=mainWindow, family='Lato-Regular',size=14)
 
 # Class
 # ------------------------------------------------------------------------------
@@ -27,7 +31,7 @@ class ntcStyleButton(Button):
                 bg                 = '#F1157F',     # Button Background Color
                 relief             = FLAT,
                 highlightthickness = 0,
-                bd                 = 0
+                borderwidth        = 0
                 )
         self.place(relx=0.5, rely=yPosition, anchor=CENTER)
 
@@ -39,7 +43,8 @@ class shell:
         subprocess.Popen(self.cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE, shell=True).wait()
 
 
-mainWindow = Tk()
+# Configure and run mainloop
+# ------------------------------------------------------------------------------
 mainWindow.attributes('-fullscreen', True)
 mainWindow.configure(background=WINDOW_BACKGROUND)
 
